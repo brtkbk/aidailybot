@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Topics</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>AI Blog Topics</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/news">News</a></li>
+            <li><a href="/quiz">Quiz</a></li>
+            <li><a href="/topics">Blog Topics</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Suggested Topics</h2>
+        <ul>
+            {% for topic in topics %}
+            <li>{{ topic['topic'] }}</li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>

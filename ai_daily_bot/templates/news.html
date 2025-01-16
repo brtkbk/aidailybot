@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI News</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Daily AI News</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/news">News</a></li>
+            <li><a href="/quiz">Quiz</a></li>
+            <li><a href="/topics">Blog Topics</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Latest News</h2>
+        <ul>
+            {% for item in news %}
+            <li>
+                <a href="{{ item['url'] }}" target="_blank">{{ item['title'] }}</a>
+                <p>{{ item['summary'] }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>

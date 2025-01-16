@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Quiz</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Test Your Knowledge</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/news">News</a></li>
+            <li><a href="/quiz">Quiz</a></li>
+            <li><a href="/topics">Blog Topics</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>AI Quiz</h2>
+        <form method="POST">
+            {% for quiz in quizzes %}
+            <div>
+                <p><strong>{{ quiz['question'] }}</strong></p>
+                {% if quiz['options'] %}
+                <ul>
+                    {% for option in quiz['options'].split(',') %}
+                    <li>
+                        <label>
+                            <input type="radio" name="answer_{{ quiz['id'] }}" value="{{ option.strip() }}">
+                            {{ option.strip() }}
+                        </label>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <textarea name="answer_{{ quiz['id'] }}"></textarea>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+        {% if results %}
+        <h3>Your Results:</h3>
+        <ul>
+            {% for result in results %}
+            <li>{{ result }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </main>
+</body>
+</html>
